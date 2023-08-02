@@ -1,0 +1,44 @@
+// Condicionales
+@mixin grid($child, $number) {
+  display: flex;
+  flex-wrap: wrap;
+  //directiva de condicional
+  @if $child == li {
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style: none;
+  }
+  //un elemento hijo y un elemento hijo con una clase
+  #{$child},
+  .#{$child} {
+    width: (100% / $number);
+  }
+}
+
+.gallery {
+  @include grid(photo, 4);
+}
+
+@mixin columns($col, $max-cols: 12) {
+  @if $col <= $max-cols {
+    width: percentage($col / $max-cols);
+  } @else {
+    //at-root-> para compilar a nivel de raiz
+    @at-root {
+      body {
+        &::before {
+          content: "El parámetro '$col' no puede ser mayor a '$max-cols'";
+          display: block;
+          padding-bottom: 1em;
+          font-family: monospace;
+        }
+      }
+    }
+  }
+}
+
+.column-3 {
+  @include columns(13);
+  background: red;
+}

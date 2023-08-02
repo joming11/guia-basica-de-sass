@@ -1,0 +1,79 @@
+// Definir un mixin-un mixin es un bloque de codigo reutilzable - un conjunto de estilos reutilizables que puede modificarse dinamicamente
+// crearlo: @mixin
+
+//@mixin nombre-mixin(){}
+
+//para usarlo: @include nombre-mixin(); con parentesis si tiene argumentos, los argumentos son variables que viven dentro del mixin
+
+//o sin parentesis si no tiene argumentos
+
+//al momento de hacer include del mixin se pasan los valores de las variables parametricas
+
+@mixin button($line-height, $font-size, $display: inline-block) {
+  // c odigo del mixin
+  display: $display;
+  line-height: $line-height;
+  font-size: $font-size;
+  padding: 0 1em;
+}
+
+.button {
+  @include button(
+    $font-size: 150em,
+    $line-height: 50
+  ); //valores por defecto, idealmente se deben declarar los parametros por defecto al final, para que al compilar, si no se llama la variable, el compilador igual procese la peticion
+
+  //los parametros pueden ser llamados en cualquier orden siempre que se especifique el keyword, $display: inline-block, $line-height: 1em,
+}
+
+// .widget {
+//   @include widget($padding: 1em,
+//                   $bg-color: red,
+//                   $text-color: blue,
+//                   $margin: 10px,
+//                   $font-size.8em,
+//                   $header-font:sans-serif,$header-display: table)
+// }
+
+//selectores internos en un mixin
+@mixin widget($padding, $header-font, $header-color) {
+  display: block;
+  padding: $padding;
+  @at-root {
+    header#{&} {
+      font-family: $header-font;
+      color: $header-color;
+    }
+  }
+}
+
+.widget {
+  @include widget(1em, Arial, blue);
+}
+
+//se guardan los valores en una variable, en este caso es una lista de valores
+$shadows: 1px solid red, 2px solid blue, 5px solid white, 10px solid yellow;
+
+//mixin con 1 parametros pero que puede recibir mas de un argumento
+@mixin multiple($box-shadow...) {
+  box-shadow: $box-shadow;
+}
+
+//se pasa la variable como argumento
+.box {
+  @include multiple($shadows);
+}
+
+// Pasar contenido al mixin
+
+@mixin menu() {
+  list-style: none;
+  //significa que podria crear un nuevo bloque de codigo
+  @content;
+}
+
+.menu {
+  @include menu;
+}
+
+//ej de aplicacion de mixin

@@ -1,0 +1,52 @@
+/* 
+  7 tipos de datos
+
+  Numeros
+  Strings
+  Colores
+  Booleans
+  Null
+  Lists
+  Maps
+
+ */
+.data-number {
+  type: number;
+  value: 100px; }
+
+.data-string {
+  type: string;
+  width: 100px/20; }
+
+.data-color {
+  type: color;
+  value: rgba(255, 3, 21, 0.5); }
+
+.data-bool {
+  type: bool;
+  value: false; }
+
+.data-bool {
+  type: null; }
+
+.data-list {
+  type: list;
+  value: Hola mundo, Adios mundo;
+  length: 2;
+  first-value: Hola mundo;
+  second-value: Adios mundo; }
+
+.social-button.facebook {
+  background-color: blue; }
+
+.social-button.youtube {
+  background-color: red; }
+
+.social-button.twitter {
+  background-color: lightblue; }
+
+.social-button.instagram {
+  background-color: arco-iris; }
+
+.social-button.ed {
+  background-color: steelblue; }

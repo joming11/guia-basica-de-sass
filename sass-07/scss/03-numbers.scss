@@ -1,0 +1,29 @@
+/* 
+  round() -> redondea genericamente, 3.5 es 4
+  3.3 es 3
+  percentage()
+
+  floor(number) -> para redondear hacia abajo
+  ceil(number) -> redondear hacia arriba
+
+  // Nota: max y min no reciben listas como parametros
+    max(numbers...) cuando se use la funcion max, se deben pasar los valores individualmente, no en una variable, debe ser max(1,2,3,4,5)
+    min(numbers...)
+
+  // devuelve el valor absoluto (sin signo)
+    abs(number) 
+
+  random([limite]) de 0 a 1 si no se le pasa un parametro
+  desde 1 hasta el parametro que se pase
+
+*/
+
+$numbers: 1, 2, 3, 4, 5;
+div {
+  // width: max(1,2,3,4,5);
+  //de esta manera, se obtendra un numero especifico dentro de una lista, y como lo que se obtiene son numeros, son validos
+  width: max(nth($numbers, 1), nth($numbers, 4));
+  abs: abs(-10);
+  random: random();
+  random-n: random(100);
+}

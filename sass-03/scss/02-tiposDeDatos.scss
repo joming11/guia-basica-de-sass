@@ -1,0 +1,135 @@
+/* 
+  7 tipos de datos
+
+  Numeros
+  Strings
+  Colores
+  Booleans
+  Null
+  Lists
+  Maps
+
+ */
+
+/*Numeros, para css la evaluacion de numero se hace sin importar la unidad que lo acompañe, em, rem, %, px
+evaluacion de tipo y valor de la variable*/
+.data-number {
+  $var: 100px;
+  type: type-of($var);
+  value: $var;
+}
+
+// Strings, en sass pueden ser entrecomillados o no, se recomienda ""
+.data-string {
+  // $number: 100;
+  // $numberUnit: $number * 1px;
+  //$var: red; la compilacion tras la evaluacion no arrojara string, sino el valor de una propiedad, si se coloca entre comillas, la compilacion si arrojara un string
+
+  $var: 100 + px;
+  type: type-of($var);
+  width: $var / 20;
+
+  /*
+  .data-string {
+    $var: 100 + px;
+    type: type-of($var);
+    width: calc(#{$var} / 20);
+
+    aqui habria que interpolar la variable para generar un css valido.
+
+    interpolar una variable es tomar el valor de una variable para formar una expresion
+
+    aqui, el calculo de width lo hace el navegador
+  } 
+  */
+
+  /*
+  .data-string {
+  $var: 100 + px;
+  type: type-of($var);
+  width: $var / 2;
+  al compilar esto arroja width: 100px/2; un string
+  idealmente manejar los valores con la unidad que corresponda
+
+  ej:
+  .data-string {
+    $number: 100;
+    $numberUnit: $number * 1px;
+    type: type-of($number);
+    width: $number * 2;
+  */
+  //value: unquote($var); para obtener el valor sin comillas
+  /*ej:
+  $var:'none';
+  type: type-of($var);
+  value: unquote($var);
+  border: unquote($var);
+
+  ej:
+  .data-string {
+    $var: hola mundo;
+    type: type-of($var);
+    value: unquote($var);
+    esto arrojara el tipo como una lista, una coleccion de valores como con border: 1px solid red;
+  */
+}
+
+// colores
+.data-color {
+  $var: rgba(255, 3, 21, 0.5);
+  type: type-of($var);
+  value: $var;
+}
+
+//Booleans
+.data-bool {
+  $var: 10 == 5;
+  type: type-of($var);
+  value: $var;
+}
+
+// Null, valor no definido
+.data-bool {
+  $var: null;
+  type: type-of($var);
+  value: $var;
+  /*
+  @mixin box($w:null){
+    width: $W;
+    cuando la funcion pida el parametro, ya tendra un "valor" definido
+  */
+}
+
+// List
+//pueden separarse con comas o espacios
+.data-list {
+  $var: Hola mundo, Adios mundo;
+  type: type-of($var);
+  value: $var;
+  length: length($var);
+  first-value: nth($var, 1);
+  second-value: nth($var, 2);
+}
+
+// Maps
+//para agrupar valores, clave->valor
+.social-button {
+  $networks-colors: (
+    facebook: blue,
+    youtube: red,
+    twitter: lightblue,
+    instagram: arco-iris,
+    ed: steelblue,
+  );
+  // type: type-of($networks-colors); para comprobar que es un mapa
+  // value: map-get($networks-colors,twitter); para obtener un valor dentro del map
+
+  //ej:la var $social se va a referir a la clave
+  //$color se va a referir al valor
+  //$networks-colors es nuestro map
+  @each $social, $color in $networks-colors {
+    &.#{$social} {
+      background-color: $color;
+    }
+  }
+}

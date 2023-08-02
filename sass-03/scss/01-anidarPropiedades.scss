@@ -1,0 +1,36 @@
+/*Anidar propiedades
+la anidacion en css no solo sirve para definir jerarquias
+tambien se puede usar para propiedades que comienzan con el mismo nombre
+se deben colocar los dos : para que al compilar se entiendo que font no es un selector sino una propiedad
+ej:
+a {
+    font: {
+        family: Open sans, sans-serif;
+        size: 1em;
+        weight: bold;
+    }
+}
+
+ej:
+.banner {
+    background: {
+        image: url();
+        size: cover;
+        position: center;
+        repeat: no-repeat;
+    }
+}
+*/
+
+.banner {
+  $w: 400px;
+  $h: $w * 0.75;
+  width: $w;
+  height: $h;
+  background: {
+    image: url(arbol.png), url(casa.png), url(fondo.jpg);
+    size: $w * 0.1, $w * 0.5, cover;
+    repeat: no-repeat;
+  }
+  animation: flotar 2s linear;
+}

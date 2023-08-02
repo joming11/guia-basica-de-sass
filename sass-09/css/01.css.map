@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAIA;;;EAGE;AASF,KAAM;EALJ,MAAM,EAAG,CAAC;EACV,OAAO,EAAG,CAAC;EACX,UAAU,EAAE,IAAI;;AAQlB;;;EAGE;AAUF,IAAK;EACH,KAAK,EAAE,CAAS;;AAIlB;;;EAGE;AAoCF,IAAK;EACH,KAAK,EAAE,GAAG;EAVR,oCAA2C;IAS/C,IAAK;MAGD,KAAK,EAAE,KAAK",
+"sources": ["../../../../%C3%81lvaro/Desktop/sass-09/scss/01.scss"],
+"names": [],
+"file": "01.css"
+}

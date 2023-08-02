@@ -1,0 +1,82 @@
+// Directivas @warn @error @debug
+// Envian mensajes a la terminal
+// Esos mensajes son expresiones
+
+/*
+@warn envia mensajes de alerta pero
+no detiene la ejecucion
+*/
+
+@mixin menu {
+  @warn 'El @mixin menu sera eliminado en la proxima version, por favor use el @mixn ed-menu';
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu {
+  @include menu;
+}
+
+/*
+@error envia un mensaje de error y
+detiene la ejecucion
+*/
+
+@function double($val) {
+  $type: type-of($val);
+  @if $type != number {
+    @error 'La funcion double solo acepta un numero como argumento pero ha recibido el #{$type} "#{$val}"';
+  }
+  @return $val * 2;
+}
+
+.box {
+  width: double(1);
+}
+
+/*
+@debug envia la informacion de la
+expresion recibida
+*/
+
+$list: 1 2 3 4;
+$map: (
+  k1: v1,
+  k2: v2,
+);
+
+.debug {
+  @debug type-of($map);
+}
+
+$breakpoints: (
+  s: 320px,
+  m: 768px,
+  l: 1024px,
+  xl: 1400px,
+);
+
+@mixin from($breakpoint) {
+  @if map-has_key($breakpoints, $breakpoint) {
+    @media screen and (min-width: map-get($breakpoints,$breakpoint)) {
+      @content;
+    }
+  } @else if type-of($breakpoint) != number {
+    $type: type-of($breakpoint);
+    @error 'El mixin from() recibe un breakpoint valido o un valor numerico en px o em. Pero ha recibido el #{$type} #{$breakpoint}';
+  } @else if unit($breakpoint) == "px" or unit($breakpoint) == "em" {
+    @media screen and (min-width: $breakpoint) {
+      @content;
+    }
+  } @else {
+    @error '#{$breakpoint} no es numero valido, use un valor en px o em';
+  }
+}
+
+.box {
+  color: red;
+  @include from(100em) {
+    color: black;
+  }
+}

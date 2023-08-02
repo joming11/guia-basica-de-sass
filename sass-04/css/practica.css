@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+}
+
+.cols-6 {
+  width: 41.66667%;
+}
+
+.box {
+  color: red;
+}
+
+@media (min-width: 478px) {
+  .box {
+    color: green;
+  }
+}
+
+@media (min-width: 1024px) {
+  .box {
+    color: purple;
+  }
+}
+
+.video {
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+  padding-bottom: 56.25%;
+  position: relative;
+}
+
+.video iframe,
+.video video,
+.video object {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}

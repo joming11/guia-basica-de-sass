@@ -1,0 +1,17 @@
+.widget {
+  display: block;
+  padding: 1em;
+}
+
+header.widget {
+  font-family: Arial;
+  color: blue;
+}
+
+.box {
+  box-shadow: 1px solid red, 2px solid blue, 5px solid white, 10px solid yellow;
+}
+
+.menu {
+  list-style: none;
+}

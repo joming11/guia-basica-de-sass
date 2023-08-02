@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/* 
+  Adicion o concatenacion: +
+  Resta: - (poner espacios entre los operandos)
+  Division /
+  Multiplicacion *
+  Modulo (resto de una division) %
+  Comparaciones (>, <, >=, <=, ==, !=)
+  Operadores lógicos (and, or);
+*/
+.div {
+  type: Not a number; }

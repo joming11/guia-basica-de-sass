@@ -1,0 +1,177 @@
+// CSS functions - funciones, codigo reutilizable
+
+// rgb()
+$color: rgb(255, 10, 0);
+.box {
+  background: $color;
+}
+
+// calc()
+.box {
+  width: calc(100% - 20px);
+}
+
+// scale(x,y)
+
+.box {
+  transform: scale(1.2);
+}
+
+// rotate()
+// translate(x,y)
+// linear-gradient() repating-linear-gradient()
+// radial-gradient() repeating-linear-gradient()
+// attr()
+
+// Funciones nativas en Sass
+
+// unquote() elimina las comillas de un string quote() agrega comillas
+
+/*ej:
+$string1:'hola';
+$string2: mundo
+$string3: $string1 + $string2;
+
+arroja 'holamundo'
+*/
+
+$string1: "no-";
+$string2: repeat;
+$string3: $string1 + $string2;
+$font-size: 12px;
+
+.data {
+  value: $string3;
+  //caso en el que no se necesitan las comillas
+  background-repeat: unquote($string3);
+  &::before {
+    //caso en el que necesitamos imprimir comillas
+    content: quote($font-size);
+  }
+}
+
+// percentage()convierte un numero a su porcentaje round() redondea un numero a su valor mas cercano
+
+.percentage {
+  //en css 1 es 100%, 0.2 es el equivalente a 20$, 2 -> 200%....
+  // width: percentage(60);
+  width: round(3/2);
+}
+
+// nth($list,$index) para obtener un elemento de una lista - map-get($map,$key) para obtener un elemento de un mapa, en sass se indexa desde 1
+
+// type-of() para evaluar que tipo de dato esta contenido en una variable
+
+// unit()
+// Devuelve la unidad de medida de un número (como string)
+
+$unit: 20em;
+.unit {
+  width: unit($unit);
+  //esto devuelve "em"
+}
+
+// unitless()
+// Devuelve un boolean
+// true  -> si el dato no tiene unidad
+// false -> si el dato si tiene unidad
+
+.unitless {
+  //evaluando, 20em, tiene la unidad em, dara false
+  value: unitless($unit);
+}
+
+// tip
+//esto dara 22em, se puede hacer esta suma en sass sin necesidad de especificar los ems en el otro valor
+$unit2: 20em + 2;
+
+.unit2 {
+  width: $unit2;
+}
+
+// Crear nuestras propias funciones
+
+@function miFuncion() {
+  // mis calculos
+  @return valor;
+}
+
+//se pueden pasar parametros con valores ($b:10)
+//se pueden pasar un paramtero y recibir mas de un argumento ($b...)
+
+// Ejercicios
+
+// Function pixeles a em
+@function em($elemento, $padre: 16px) {
+  $em: ($elemento / $padre) * 1em;
+  @return $em;
+}
+
+p {
+  font-size: em(8px);
+}
+
+div {
+  $fz: 24px;
+  font-size: $fz;
+  p {
+    font-size: em(7px, $fz);
+  }
+}
+//rutas - image path
+$path: "../assets/img/";
+
+// Image path (ruta a las imagenes)
+@function img($img) {
+  @return url($path + $img);
+}
+
+div {
+  background: img("bg.jpg");
+}
+
+// Multiples box-shadow
+
+@function long-shadow($number, $color) {
+  //$box-shadow: variable que tiene el valor incial del box-shadow
+  $box-shadow: 1px 1px #{$color};
+  //from en el ciclo es de donde se desea que comience el ciclo
+  @for $i from 2 through $number {
+    $box-shadow: "#{$box-shadow},
+           #{$i}px #{$i}px #{$color}";
+  }
+  @return unquote($box-shadow);
+}
+
+//.long-shadow {box-shadow: long-shadow(numero de repeticiones, color);
+
+.long-shadow {
+  $color: green;
+  width: 100px;
+  height: 100px;
+  font-weight: bold;
+  background: lighten($color, 10);
+  box-shadow: long-shadow(20, $color);
+  border-radius: 50%;
+  font-size: em(10px);
+  text-align: center;
+  line-height: 100px;
+}
+
+// Convertir numero con unidad a solo numero
+// Input 20em, Output: 20
+
+@function no-unit($number) {
+  //nos aseguramos que el numero tenga unidad
+  @if no unitless($number) {
+    //se extrae la unidad de la unidad
+    $unit: ($number * 0) + 1;
+    //se divide la unidad entre su unidad para que quede solo el numero
+    $no-unit: $number / $unit;
+    @return $no-unit;
+  }
+}
+
+.no-unit {
+  line-height: no-unit(50deg);
+}

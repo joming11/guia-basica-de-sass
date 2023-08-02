@@ -1,0 +1,119 @@
+// $rgb: rgb(200,20,50);
+// $hsl: hsl(300,80,50);
+// $color: lighten($base,20);
+// $value: lightness($color);
+
+// Funciones RGB
+// red(), green(), blue()
+// rgb(), rgba()
+
+// Funciones HSL
+// hue(), saturation(), lightness();
+// adjust-hue() -> para modificar el canal hue (recibe parametro, grados a donde quiero el color)
+// saturate() -> para modificar la saturation, desaturate()
+// lighten() -> para modificr la luminosidad, darken()
+
+//ejemplo de uso de saturate
+//$base: hsl(0, 100, 50);
+//$color: saturate($base, cuanto se va a saturar);
+//$color: desaturate($base, cuanto se va a desaturar);
+
+//ejemplo de maipulacion de la luminosidad
+//$base: hsl(0, 100, 50);
+// $color: lighten($base,20);
+// $color: darken($base,20);
+// $value: lightness($color);
+
+// Colores complementarios e inversos
+// complement()
+//   opuesto en HSL (opuesto en 180deg de hue)
+// invert()
+//   opuesto en RGB (restar del valor maximo
+//   de canal el valor actual)
+
+//prueba para probar invert y complement
+// $rgb: rgb(200,20,50);
+// $hsl: hsl(300,80,50);
+
+// $color: hsl(100, 100, 50);
+//pregunta cuanto de un color tiene
+// $value: red($color);
+// $value: lightness($color);
+// $value: hue($color);
+// $value: saturation($color);
+
+// body {
+//   background: $color;
+//&:before{
+//     content: "#{$value}";
+//     font-size: 10em;
+//     display: block;
+//     text-align: center;
+//      color: invert($color);
+//   }
+// }
+
+//   background: complement($hsl);
+//   $value: hue(complement($hsl));
+//   &:before{
+//     content: "#{$value}";
+//     font-size: 10em;
+//     display: block;
+//     text-align: center;
+//   }
+// }
+
+//prueba
+body {
+  background: #111;
+  margin: 0;
+}
+
+// @function spectrum($direction){
+//   $color: 'linear-gradient(#{$direction}';
+//   @for $i from 1 through 360 {
+//       $current-color: hsl($i,100,50);
+//       $color: '#{$color}, #{$current-color}';
+//   }
+//   $color: unquote('#{$color})');
+//   @return $color;
+// } exitosa
+
+// .spectrum {
+//   width: 90%;
+//   height: 300px;
+//   border: 1px solid white;
+//   margin: 2em auto;
+//   background: spectrum(to left);
+// }
+
+//otra manera - circulo cromatico
+.spectrum {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  margin: 2em auto;
+  position: relative;
+  animation: spectrum 1s linear infinite;
+  @keyframes spectrum {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+}
+
+.dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  left: 190px;
+  transform-origin: 10px 200px;
+  @for $i from 1 through 360 {
+    &:nth-child(#{$i}) {
+      //box-shadow: 0 0 10px 5px hsl($i,100,50);
+      transform: rotate($i * 1deg);
+      background-color: hsl($i, 100, 50);
+    }
+  }
+}

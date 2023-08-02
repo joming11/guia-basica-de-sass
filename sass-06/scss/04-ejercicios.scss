@@ -1,0 +1,66 @@
+// recorrer listas anidadas
+//valores dentro de valores
+//nth($networks, 1) daria como valor, todo el primer valor, es decir, facebook, blue, 1px
+//nth(nth($networks,1)2); esto daria el segundo valor dentro del primer valor
+$networks: (facebook, blue, 1px), (twitter, lightblue, 2px), (youtube, red, 3px);
+
+@each $network in $networks {
+  //la variable selector recibe un valor de la lista, en la posicion 1
+  $selector: nth($network, 1);
+  //interpolar el valor y colocarlo en una clase
+  .#{$selector} {
+    background-color: nth($network, 2);
+    margin: nth($network, 3);
+  }
+}
+
+// Crear funcion para recuperar un valor
+// dentro de listas anidadas
+
+@function sublist($list, $index, $subindex) {
+  $sublist: nth($list, $index);
+  $value: nth($sublist, $subindex);
+  @return $value;
+}
+
+data {
+  value: sublist($networks, 2, 3);
+}
+
+// Recorrer un mapa anidado
+
+$colors: (
+  blue: (
+    base: blue,
+    dark: darken(blue, 10),
+    light: lighten(blue, 10),
+  ),
+  green: (
+    base: green,
+    dark: darken(green, 10),
+    light: lighten(green, 10),
+  ),
+);
+
+@function submap($map, $key, $subkey) {
+  $submap: map-get($map, $key);
+  $value: map-get($submap, $subkey);
+  @return $value;
+}
+
+data {
+  value: submap($colors, green, dark);
+}
+
+// Recorrer el mapa anidado
+
+//en la variable color se obtiene blue & green
+//en $subcolors, los mapas internos, base, dark & light
+//colors es el mapa en si
+@each $color, $subcolors in $colors {
+  @each $type, $value in $subcolors {
+    .#{$color}-#{$type} {
+      background-color: $value;
+    }
+  }
+}

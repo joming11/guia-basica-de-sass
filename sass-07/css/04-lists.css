@@ -1,0 +1,23 @@
+/* 
+  Funciones de listas
+
+  nth($list,index)
+  lenght($list)
+
+  join($list1,$list2) -> concatena listas
+    usa el separador del primer argumento
+    o se puede especificar el separador
+    como tercer argumento (comma | space)
+
+  append($list,value,[separator])
+
+  zip($list1,$list2)
+    Crea una lista multidimensional con las
+    listas pasadas como argumentos
+
+*/
+.lists {
+  join: red green blue "a" "b" "c";
+  colors: red green blue yellow;
+  colors-letters: "b";
+}

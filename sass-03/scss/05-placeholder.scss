@@ -1,0 +1,36 @@
+/*
+Bloque de declaraciones que no se compila
+*/
+
+%widget {
+  width: 20px;
+  height: 100px;
+}
+
+%button {
+  display: inline-block;
+  padding: 1em;
+}
+
+@mixin widget2($color) {
+  background: $color;
+}
+
+.banner {
+  @extend %widget;
+  @include widget2(red);
+}
+
+.banner-2 {
+  @extend %widget;
+  @include widget2(green);
+}
+
+.banner-3 {
+  @extend %widget;
+  @include widget2(pink);
+}
+
+.button {
+  @extend %button;
+}

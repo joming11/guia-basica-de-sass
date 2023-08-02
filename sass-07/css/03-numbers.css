@@ -1,0 +1,23 @@
+/* 
+  round()
+  percentage()
+
+  floor(number)
+  ceil(number)
+
+  // Nota: max y min no reciben listas como parametros
+    max(numbers...)
+    min(numbers...)
+
+  // devuelve el valor absoluto (sin signo)
+    abs(number) 
+
+  random([limite])
+
+*/
+div {
+  width: 4;
+  abs: 10;
+  random: 0.21893;
+  random-n: 69;
+}

@@ -1,0 +1,108 @@
+/*
+nav {
+  display: flex;
+  ul {
+    color: transparent;
+    li {
+      color: aquamarine;
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
+buena practica, evitar el anidamiento excesivo
+h2 {
+    + p {
+        color: red;
+    }
+    > a {
+        text-transform: uppercase;
+    }
+}
+selectores hermanos son utiles
+
+cuando usar &
+.button {
+    display: inline-block;
+    backgroun: red;
+    :hover {
+        font-size: 32px;
+    }
+}
+esto daria error, pues se genera un espacio como si el estado hover
+fuera hijo de .button
+
+forma correcta
+.button {
+    display: inline-block;
+    backgroun: red;
+    &:hover {
+        font-size: 32px;
+    }
+}
+
+tambien se puede usar
+.widget {
+    margin: 0;
+    footer & {
+        margin: 5px;
+    }
+}
+
+para afectar al padre y aun elemento dentro
+.menu {
+    &, ul{
+        list-style: none;
+    }
+}
+
+para afectar al padre y a todos los a con la clase .button
+mediante una interpolacion de variables
+.button {
+    color: green;
+    a{
+        color: red;
+    }
+}
+
+en una anidacion el & tomara al padre o a los selectores padres
+segun el nivel de anidacion
+
+para afectar un elemento que que no es hijo directo pero tiene relacion con otro declarado
+.menu {
+    variable local
+    $menu-bg: blue;
+
+    @at-root .icon-menu{
+        color: $menu-bg;
+    }
+}
+al compilarse, la clase icon-menu estara fuera de la clase .menu, pero por @at-root tendra acceso a la variable local aunque no sea hijo directo
+*/
+/*Imports
+@import "otro.scss";
+se importa sin la extension
+
+partials
+archivos que no van a ser compilados
+su nombre debe comenzar con guion bajo _file.scss
+*/
+/*Extend
+Permite extender los estilos de una clase
+
+.menu {
+    propiedad: valor;
+    propiedad: valor;
+    propiedad: valor;
+    propiedad: valor;
+}
+
+extrae las propiedades de la clase menu
+.menu-2 {
+    @extend .menu;
+    flex-direction: column;
+}
+//comentario invisible, no se compila
+/**comentario visible, se compila
+*/

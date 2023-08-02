@@ -1,0 +1,29 @@
+/* 
+  Funciones de listas
+
+  nth($list,index) -> toma el valor especificado segun el index que se indique
+  lenght($list) -> numero de elementos de una lista
+
+  join($list1,$list2) -> concatena listas
+    usa el separador del primer argumento
+    o se puede especificar el separador
+    como tercer argumento (comma | space)
+
+  append($list,value,[separator])->añadir un nuevo elemento a una lista
+
+  zip($list1,$list2) ->concatena listas, valor-posicion, elemento a de la lista a, elemento a de la lista b, elemento b de la lista, elemento b de la lista b.....
+    Crea una lista multidimensional con las
+    listas pasadas como argumentos
+
+*/
+
+$colors: red green blue;
+$letters: "a", "b", "c";
+$colors-letters: zip($colors, $letters);
+
+.lists {
+  $local-colors: append($colors, yellow);
+  join: join($colors, $letters, space);
+  colors: $local-colors;
+  colors-letters: nth(nth($colors-letters, 2), 2);
+}

@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/* 
+  Funciones para strings
+    quote()
+    unquote()
+    to-upper-case()
+    to-lower-case()
+
+  Las funciones de strings comienzan con str-
+
+  str-length($string) -> número de caracteres
+
+  str-index($string,'subcadena') -> indice de la subcadena
+
+  str-insert($string,'subcadena', index)
+
+  str-slice($string,inicio,[final])
+    inicio y final son indices numericos
+ */
+.string {
+  length: 29;
+  index-escuela: 15;
+  saludo: "Bienvenidos amigos a Escuela Digital";
+  company: "Escuela Digital";
+}

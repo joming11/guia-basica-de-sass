@@ -1,0 +1,15 @@
+/* 
+  Selectores
+    selector-nest($selector1,$selector2)
+      Crea un selector anidado (nested)
+    selector-append($selector1,$selector2)
+      Crea un selector nuevo uniendo
+      los dos selectores
+*/
+ul li {
+  display: block;
+}
+
+a.button {
+  display: block;
+}

@@ -1,0 +1,34 @@
+// Introspeccion -> analizar su propio codigo
+// type-of() -> devuelve el tipo de dato
+// unit() -> devuelve la unidad de un numero
+// unitless() -> devuelve true o false segun si un numero no tiene o si tiene unidad
+// inspect() -> equivalente al console.log()
+
+// las siguientes evaluan si existen
+// las variables, funciones o mixins
+// y devuelven un boolean
+// variable-exists(variable)
+//al evaluar si una variable existe, no se debe pasar el signo de $
+// function-exists(funcionName)
+// mixin-exists(mixinName)
+// call(funcion,args...)
+// Ejecuta una funcion
+
+$var: 20px;
+$map: (
+  k1: v1,
+  k2: v2,
+);
+
+@function double($val) {
+  @return $val * 2;
+}
+
+.inspect {
+  value: inspect($map);
+  variable-exists: variable-exists(map);
+  function-exists: function-exists(double);
+  width: double (10px);
+  //otra forma de llamar a una funcion
+  width: call(double, 15px);
+}

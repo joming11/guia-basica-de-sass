@@ -1,0 +1,16 @@
+/* 
+  if(condicion,if value, else value)
+    equivalente al operador ternario
+
+  unique-id()
+    genera un string aleatorio unico en el scope actual
+  
+*/
+.if {
+  width: 20px;
+  unique-id: u592ba3ab;
+}
+
+.else {
+  unique-id: uc2a56a09;
+}

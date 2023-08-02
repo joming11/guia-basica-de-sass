@@ -1,0 +1,9 @@
+/* 
+  Se usa para construir expresiones con el valor de una variable
+
+  Se encierra la variable entre
+ */
+.div-youtube:nth-child(2) {
+  background: red; }
+  .div-youtube:nth-child(2)::before {
+    content: "Bienvenido a youtube"; }

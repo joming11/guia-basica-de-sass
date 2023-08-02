@@ -1,0 +1,38 @@
+/*ciclos - For
+
+@for $i from <start> through <end> {
+  // codigo que se repite hasta el numero <end>
+}
+
+@for $i from <start> to <end> {
+  // codigo que se repite hasta el numero <end-1>
+}
+*/
+
+@for $i from 1 to 10 {
+  .item-#{$i} {
+    width: percentage($i/10);
+  }
+}
+
+$list: blue, red, green, magenta, purple;
+
+@for $i from 1 through length($list) {
+  //se toma cada valor de la lista y se asigna a $i a traves de nth, que devuelve un valor de una lista, los parametros son la lista y la posicion del elemento dentro de la lista
+  $current: nth($list, $i);
+  //la clase button aplicara el valor que tome la variable $current
+  .button.#{$current} {
+    background-color: $current;
+  }
+}
+
+@mixin prueba($elem) {
+  #{$elem} {
+    color: red;
+  }
+}
+
+div {
+  @include prueba("p");
+  @include prueba(".parrafo");
+}
